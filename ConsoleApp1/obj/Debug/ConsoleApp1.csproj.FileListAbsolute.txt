@@ -1,0 +1,7 @@
+F:\DocumentGame\1.UNITY_2D\BaseClient\BaseNetwork\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+F:\DocumentGame\1.UNITY_2D\BaseClient\BaseNetwork\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+F:\DocumentGame\1.UNITY_2D\BaseClient\BaseNetwork\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+F:\DocumentGame\1.UNITY_2D\BaseClient\BaseNetwork\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
+F:\DocumentGame\1.UNITY_2D\BaseClient\BaseNetwork\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+F:\DocumentGame\1.UNITY_2D\BaseClient\BaseNetwork\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+F:\DocumentGame\1.UNITY_2D\BaseClient\BaseNetwork\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
