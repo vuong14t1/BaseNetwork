@@ -15,7 +15,14 @@ namespace ConsoleApp1.Network
         private int capacity;
         private int length = 0;
 
-        public OutPacket(int capacity) {
+        public OutPacket() {
+        }
+
+        public void SetCmdId(short id) {
+            cmdId = id;
+        }
+
+        public void InitData(int capacity) {
             this.data = new byte[capacity];
             this.capacity = capacity;
         }
@@ -30,12 +37,15 @@ namespace ConsoleApp1.Network
         }
 
         public void PackHeader() {
+            //harcode header -> vi no khong su dung tren header
+            PutByte(1);
             PutUnsignedShort((ushort)this.length);
             PutByte(controllerId);
             PutShort(cmdId);
         }
 
         public void PutByte(byte b) {
+            extendsLengthDataIfNeed(1);
             this.data[this.pos++] = b;
             this.length = this.pos;
         }
@@ -111,6 +121,16 @@ namespace ConsoleApp1.Network
             byte[] dest = new byte[this.length];
             Array.Copy(this.data, 0, dest, 0, this.length);
             return dest;
+        }
+
+        public void extendsLengthDataIfNeed(int sizeExtra) {
+            if(pos + sizeExtra > capacity) {
+                int newSize = pos + 1 + sizeExtra;
+                byte[] temp = new byte[newSize];
+                Array.Copy(this.data, 0, temp, 0, this.length);
+                data = temp;
+                capacity = newSize;
+            }
         }
     }
 }

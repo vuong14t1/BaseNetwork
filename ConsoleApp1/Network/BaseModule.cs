@@ -40,7 +40,7 @@ namespace ConsoleApp1.Network
         }
 
         public void ProcessPackages(short cmdId) {
-            
+
         }
 
         public InPacket CreateReceivePackage(short cmdId, byte[] data) {
@@ -62,9 +62,7 @@ namespace ConsoleApp1.Network
         }
 
         public void Send(OutPacket opk) {
-            opk.PackHeader();
-            opk.PutData();
-            opk.UpdateSize();
+            opk.CreateData();
             Globals.GetConnector().Send(opk.GetData());
         }
     }
