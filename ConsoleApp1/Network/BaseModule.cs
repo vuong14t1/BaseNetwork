@@ -60,6 +60,7 @@ namespace ConsoleApp1.Network
             opk.PackHeader();
             opk.PutData();
             opk.UpdateSize();
+            Globals.GetConnector().Send(opk.GetData());
         }
     }
 }

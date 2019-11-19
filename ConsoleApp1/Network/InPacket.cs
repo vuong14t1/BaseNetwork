@@ -37,7 +37,7 @@ namespace ConsoleApp1.Network
 
         public byte GetByte() {
             byte b = ParseByte();
-            return b > 240 ? Convert.ToByte(b - 256) : b;
+            return bb;
         }
 
         public bool GetBool() {
@@ -60,21 +60,28 @@ namespace ConsoleApp1.Network
         }
 
         public long GetLong() {
-        return ((this.ParseByte() & 255) * 72057594037927940) +
-            ((this.ParseByte() & 255) * 281474976710656) +
-            ((this.ParseByte() & 255) * 1099511627776) +
-            ((this.ParseByte() & 255) * 4294967296) +
-            ((this.ParseByte() & 255) * 16777216) +
-            ((this.ParseByte() & 255) * 65536) +
-            ((this.ParseByte() & 255) * 256) +
-            ((this.ParseByte() & 255));
+        return ((this.ParseByte() & 255) << 56) +
+            ((this.ParseByte() & 255) << 48) +
+            ((this.ParseByte() & 255) << 40) +
+            ((this.ParseByte() & 255) << 32) +
+            ((this.ParseByte() & 255) << 24) +
+            ((this.ParseByte() & 255) << 16) +
+            ((this.ParseByte() & 255) << 8) +
+            ((this.ParseByte() & 255) << 0);
         }
 
+        public double GetDouble () {
+            byte[] byteArray = new byte[8];
+            for(int i = 7; i >= 0; i--){
+                byteArray[i] = ParseByte();
+            }
+            return BitConverter.ToDouble(byteArray, 0);
+        }
 
         public ushort GetUnsignedShort()
         {
-            var a = (this.ParseByte() & 255) << 8;
-            var b = (this.ParseByte() & 255) << 0;
+            int a = (this.ParseByte() & 255) << 8;
+            int b = (this.ParseByte() & 255) << 0;
             return (ushort)(a + b);
         }
 
