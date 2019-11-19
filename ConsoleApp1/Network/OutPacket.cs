@@ -30,7 +30,9 @@ namespace ConsoleApp1.Network
         }
 
         public void PackHeader() {
-
+            PutUnsignedShort((ushort)this.length);
+            PutByte(controllerId);
+            PutShort(cmdId);
         }
 
         public void PutByte(byte b) {
@@ -89,6 +91,11 @@ namespace ConsoleApp1.Network
         public void PutByteArray(byte[] bytes) {
             this.PutShort((short)bytes.Length);
             this.PutBytes(bytes);
+        }
+
+        public void PutUnsignedShort(ushort v)  {
+            PutByte((byte)(v >> 8));
+            PutByte((byte)(v >> 0));
         }
 
         public void UpdateUnsignedShortAtPos(int v, int pos) {

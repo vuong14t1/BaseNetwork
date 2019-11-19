@@ -10,9 +10,9 @@ namespace ConsoleApp1.Network
     {
         private byte pos;
         private int length;
-        private byte controllerId;
+        private int controllerId;
         private short cmdId;
-        private byte error;
+        private int error;
         private byte[] data;
         public InPacket() {
 
@@ -35,9 +35,9 @@ namespace ConsoleApp1.Network
             return this.data[this.pos++];
         }
 
-        public byte GetByte() {
-            byte b = ParseByte();
-            return bb;
+        public int GetByte() {
+            int b = ParseByte();
+            return b;
         }
 
         public bool GetBool() {
@@ -87,11 +87,11 @@ namespace ConsoleApp1.Network
 
         public byte[] GetBytes(int size)
         {
-            byte[] bytes = { };
+            byte[] bytes = new byte[size];
             var i = 0;
             while (i < size)
             {
-                bytes[i] = (this.ParseByte());
+                bytes[i] = this.ParseByte();
                 i++;
             }
 
@@ -109,7 +109,7 @@ namespace ConsoleApp1.Network
             return Encoding.ASCII.GetString(outChars);
         }
 
-        public byte GetError() {
+        public int GetError() {
             return this.error;
         }
 

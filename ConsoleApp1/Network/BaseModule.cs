@@ -35,11 +35,12 @@ namespace ConsoleApp1.Network
                 if (this.curPacket.GetError() == ErrorDefine.SUCCESS) {
                     this.curPacket.ReadData();
                 }
+                ProcessPackages(cmdId);
             }
         }
 
         public void ProcessPackages(short cmdId) {
-
+            
         }
 
         public InPacket CreateReceivePackage(short cmdId, byte[] data) {
@@ -54,6 +55,10 @@ namespace ConsoleApp1.Network
         public static OutPacket GetOutPacket(Type clazz) {
             OutPacket inPacket = (OutPacket)Activator.CreateInstance(clazz);
             return inPacket;
+        }
+
+        public InPacket GetCurPacket() {
+            return this.curPacket;
         }
 
         public void Send(OutPacket opk) {

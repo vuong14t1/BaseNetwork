@@ -17,15 +17,22 @@ namespace ConsoleApp1.Network
         }
 
         public void onFinishConnect() {
-
+            //khi websocket thiet lap
+            //gui goi handshake
         }
 
         public void onDisconnect() {
 
         }
 
-        public void onReceived (byte[] rawData) {
-
+        public void onReceived (short cmdId, byte[] rawData) {
+            if(!Globals.GetConnector().IsConnected()) return;
+            
+            foreach(BaseModule baseModule in  modulesRegisterd) {
+                if(baseModule.IsInRangeListener(cmdId)) {
+                    baseModule.OnListener(cmdId, rawData);
+                }
+            }
         }
         
     }
