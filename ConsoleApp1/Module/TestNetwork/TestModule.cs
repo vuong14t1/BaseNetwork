@@ -12,9 +12,22 @@ namespace ConsoleApp1.Module.TestNetwork
         public override void ProcessPackages(short cmdId) {
             switch (cmdId) {
                 case 1:
-                    Console.WriteLine("ProcessPackages");
+                    if (this.curPacket.GetError() == ErrorDefine.SUCCESS) {
+                        Console.WriteLine("ProcessPackages ");
+                    }
+                    
                     break;
             }
+        }
+
+        public override InPacket CreateReceivePackage(short cmdId, byte[] rawData) {
+            InPacket pk = null;
+            switch (cmdId) {
+                case 1:
+                    pk = new TestInPacket();
+                    break;
+            }
+            return pk;
         }
     }
 }

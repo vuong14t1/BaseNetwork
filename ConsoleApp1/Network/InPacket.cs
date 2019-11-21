@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.Network
 {
-    class InPacket
+    abstract class InPacket
     {
         private byte pos;
         private int length;
         private int controllerId;
         private short cmdId;
-        private int error;
+        private byte error;
         private byte[] data;
         public InPacket() {
 
@@ -25,6 +25,7 @@ namespace ConsoleApp1.Network
             this.controllerId = GetByte();
             this.cmdId = GetShort();
             this.error = GetByte();
+
         }
 
         public byte[] GetData() {
@@ -109,11 +110,11 @@ namespace ConsoleApp1.Network
             return Encoding.ASCII.GetString(outChars);
         }
 
-        public int GetError() {
+        public byte GetError() {
             return this.error;
         }
 
-        public void ReadData() {
+        public virtual void ReadData() {
         }
     }
 }

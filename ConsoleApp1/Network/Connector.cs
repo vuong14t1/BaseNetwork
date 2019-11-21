@@ -80,8 +80,6 @@ namespace ConsoleApp1.Network
                     {
                         short cmdId = GetCmdIdFromRawData(data);
                         clientListener.onReceived(cmdId, data);
-                        Console.WriteLine("data received cmdId: " + cmdId);
-                        Console.WriteLine("data received length: " + length);
 
                     }
                     else

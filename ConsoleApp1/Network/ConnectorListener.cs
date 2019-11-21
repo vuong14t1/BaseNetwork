@@ -28,9 +28,10 @@ namespace ConsoleApp1.Network
 
         public void onReceived (short cmdId, byte[] rawData) {
             if(!Globals.GetConnector().IsConnected()) return;
-            
+            Console.WriteLine("vao day cmd " + cmdId);
             foreach(BaseModule baseModule in  modulesRegisterd) {
-                if(baseModule.IsInRangeListener(cmdId)) {
+               
+                if (baseModule.IsInRangeListener(cmdId)) {
                     baseModule.OnListener(cmdId, rawData);
                 }
             }

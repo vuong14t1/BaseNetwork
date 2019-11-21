@@ -28,9 +28,8 @@ namespace ConsoleApp1.Network
 
         }
 
-        public new void ReadData() {
-            res = GetByte();
-            Console.WriteLine("date recevied login " + res);
+        public override void ReadData() {
+           
         }
     }
 }

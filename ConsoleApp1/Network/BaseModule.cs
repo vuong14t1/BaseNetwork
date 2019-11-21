@@ -32,6 +32,7 @@ namespace ConsoleApp1.Network
             if (this.curPacket != null) {
                 this.curPacket.Init(data);
                 this.errorCode = (byte)this.curPacket.GetError();
+                Console.WriteLine("error " + this.curPacket.GetError());
                 if (this.curPacket.GetError() == ErrorDefine.SUCCESS) {
                     this.curPacket.ReadData();
                 }
