@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp1.Network;
+using ConsoleApp1.Module.Loading;
 
 namespace ConsoleApp1.Network
 {

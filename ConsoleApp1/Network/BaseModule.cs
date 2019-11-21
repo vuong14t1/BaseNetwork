@@ -7,7 +7,7 @@ using ConsoleApp1.Module.Loading;
 
 namespace ConsoleApp1.Network
 {
-    class BaseModule
+    abstract class BaseModule
     {
         public InPacket curPacket;
         public byte errorCode;
@@ -31,7 +31,7 @@ namespace ConsoleApp1.Network
             this.curPacket = CreateReceivePackage(cmdId, data);
             if (this.curPacket != null) {
                 this.curPacket.Init(data);
-                this.errorCode = this.curPacket.GetError();
+                this.errorCode = (byte)this.curPacket.GetError();
                 if (this.curPacket.GetError() == ErrorDefine.SUCCESS) {
                     this.curPacket.ReadData();
                 }
@@ -39,11 +39,11 @@ namespace ConsoleApp1.Network
             }
         }
 
-        public void ProcessPackages(short cmdId) {
+        public virtual void ProcessPackages(short cmdId) {
 
         }
 
-        public InPacket CreateReceivePackage(short cmdId, byte[] data) {
+        public virtual InPacket CreateReceivePackage(short cmdId, byte[] data) {
             return null;
         }
 

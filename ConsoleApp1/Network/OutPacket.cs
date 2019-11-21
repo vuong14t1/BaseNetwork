@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.Network
 {
-    class OutPacket
+    abstract class OutPacket
     {
         private byte pos = 0;
         private short cmdId;
-        private byte controllerId;
+        private byte controllerId = 1;
         private byte[] data;
         private int capacity;
         private int length = 0;
@@ -27,7 +27,8 @@ namespace ConsoleApp1.Network
             this.capacity = capacity;
         }
 
-        public void PutData() {
+        public virtual void PutData() {
+           
         }
 
         public void CreateData() {
@@ -108,12 +109,12 @@ namespace ConsoleApp1.Network
             PutByte((byte)(v >> 0));
         }
 
-        public void UpdateUnsignedShortAtPos(int v, int pos) {
-            this.data[this.pos] = (byte)(v >> 8);
+        public void UpdateUnsignedShortAtPos(ushort v, int pos) {
+            this.data[pos] = (byte)(v >> 8);
             this.data[pos + 1] = (byte)(v >> 0);
         }
         public void UpdateSize() {
-            UpdateUnsignedShortAtPos(this.length - 3, 1);
+            UpdateUnsignedShortAtPos((ushort)(this.length - 3), 1);
         }
 
         public byte[] GetData()

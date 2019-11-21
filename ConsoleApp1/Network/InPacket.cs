@@ -35,8 +35,8 @@ namespace ConsoleApp1.Network
             return this.data[this.pos++];
         }
 
-        public int GetByte() {
-            int b = ParseByte();
+        public byte GetByte() {
+            byte b = ParseByte();
             return b;
         }
 

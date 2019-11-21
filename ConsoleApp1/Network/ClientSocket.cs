@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Sockets;
 
 namespace ConsoleApp1.Network
 {
-    class CmdDefine
+    //private TcpClient clientSocket = new TcpClient();
+    class ClientSocket
     {
-        public static short LOGIN = 1;
+
     }
 }
